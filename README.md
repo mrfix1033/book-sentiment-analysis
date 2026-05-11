@@ -51,7 +51,7 @@
 Для запуска приложения требуется Python 3.11
 ### Development запуск
 ```bash
-git clone https://github.com/Mikhail-Galkin/book-sentiment-analysis.git
+git clone https://github.com/mrfix1033/book-sentiment-analysis.git
 cd book-sentiment-analysis
 ```
 Подговка виртуального окружения
