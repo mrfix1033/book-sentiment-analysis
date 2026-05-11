@@ -16,6 +16,7 @@
   - Сглаженный тренд (скользящее среднее)
 - **Интерактивное исследование**:
   - Загрузка собственных текстов (TXT)
+  - Поддерживаемые кодировки: UTF-8, Windows-1251
   - Настройка параметров анализа
   - Просмотр текста по клику на график
 
@@ -47,11 +48,11 @@
 
 
 ## Установка и запуск
-
+Для запуска приложения требуется Python 3.11
 ### Development запуск
 ```bash
 git clone https://github.com/Mikhail-Galkin/book-sentiment-analysis.git
-cd sentiment-analysis
+cd book-sentiment-analysis
 ```
 Подговка виртуального окружения
 ```bash
@@ -59,11 +60,15 @@ python -m venv venv
 source venv/bin/activate  # Linux/MacOS
 venv\Scripts\activate    # Windows
 
-pip install -r requirements.txt
+pip install -r site/requirements.txt
 ```
 Запуск приложения
 ```bash
-python main.py
+python site/main.py
+```
+Необходимо в строке браузера ввести
+```
+http://127.0.0.1:8050/
 ```
 
 
