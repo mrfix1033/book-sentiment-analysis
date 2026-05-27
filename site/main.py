@@ -1,3 +1,5 @@
+import math
+
 import pandas as pd
 import numpy as np
 import re
@@ -32,10 +34,14 @@ def load_text_from_file(contents):
 
 
 # Анализ настроения
-def calculate_sentiment(text_chunk):
+def calculate_sentiment(text_chunk, neutral_range=(4.0, 6.0)):
     cleaned = re.sub(r"[^A-Za-zА-Яа-яЁё]", " ", text_chunk).lower()
     tokens = cleaned.split()
-    words = [w for w in tokens if w in words_dict]
+    words = [
+        w for w in tokens
+        if w in words_dict
+        and not (neutral_range[0] <= words_dict[w] <= neutral_range[1])
+    ]
     if not words:
         return 5.0
     freq = Counter(words)
@@ -107,12 +113,12 @@ app.layout = dbc.Container([
     dbc.Row([
         dbc.Col(dbc.InputGroup([
             dbc.InputGroupText("Число предложений в фрагменте:"),
-            dbc.Input(id="sentence-input", type="number", value=20, min=1,
+            dbc.Input(id="sentence-input", type="number", value=7, min=1,
                       step=1, className="form-control"),
         ], className="mb-3"), width=6),
         dbc.Col(dbc.InputGroup([
             dbc.InputGroupText("Размер окна скользящего среднего:"),
-            dbc.Input(id="window-input", type="number", value=5, min=1, step=1,
+            dbc.Input(id="window-input", type="number", value=3, min=1, step=1,
                       className="form-control"),
         ], className="mb-3"), width=6),
     ], className="mb-3"),
